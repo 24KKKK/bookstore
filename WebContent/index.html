@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>图书信息管理系统</title>
+<script>
+	//一个简单的时钟
+	function displayTime() {
+		document.getElementById("time").innerHTML = new Date().toTimeString();
+	}
+	setInterval(displayTime, 1000); // 每隔1秒钟调用displayTime函数
+</script>
+<style type="text/css">
+/*设置超链接样式*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+	color: #5086a5;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+a:hover {
+	color: #5086a5;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+a:visited {
+	color: #5086a5;
+	font-size: 12px;
+}
+/*整个tab层居中，宽度为600px*/
+#tabDiv {
+	width: 600px;
+	margin: 1em auto;
+	padding-bottom: 10px;
+	border-right: #b2c9d3 1px solid;
+	border-top: #b2c9d3 1px solid;
+	border-left: #b2c9d3 1px solid;
+	border-bottom: #b2c9d3 1px solid;
+	background: #ffffff;
+}
+/*tab头的样式*/
+#tabsHead {
+	padding-left: 0px;
+	height: 26px;
+	background-color: #e8f7fc;
+	font-size: 1em;
+	margin: 1px 0px 0px;
+	color: #5086a5;
+	line-height: 26px;
+}
+/*已选tab头（超链接）的样式*/
+.curtab {
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	border-right: #b2c9d3 1px solid;
+	font-weight: bold;
+	float: left;
+	cursor: pointer;
+	background: #ffffff;
+}
+/*未选tab头（超链接）的样式*/
+.tabs {
+	border-right: #c1d8e0 1px solid;
+	padding-top: 0px;
+	padding-right: 10px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	font-weight: normal;
+	float: left;
+	cursor: pointer;
+}
+
+p {
+	font-size: 9pt;
+	margin-left: 20pt;
+}
+</style>
+<script type="text/jscript">
+	
+        //显示tab（tabHeadId：tab头中当前的超链接；tabContentId要显示的层ID）
+        function showTab(tabHeadId,tabContentId)
+        {
+            //tab层
+            var tabDiv = document.getElementById("tabDiv");
+            //将tab层中所有的内容层设为不可见
+            //遍历tab层下的所有子节点
+            var taContents = tabDiv.childNodes;
+            for(i=0; i<taContents.length; i++)
+            {
+                //将所有内容层都设为不可见
+                if(taContents[i].id!=null && taContents[i].id != 'tabsHead')
+                {
+                    taContents[i].style.display = 'none';
+                }
+            }
+            //将要显示的层设为可见
+            document.getElementById(tabContentId).style.display = 'block';
+            //遍历tab头中所有的超链接
+            var tabHeads = document.getElementById('tabsHead').getElementsByTagName('a');
+            for(i=0; i<tabHeads.length; i++)
+            {
+                //将超链接的样式设为未选的tab头样式
+                tabHeads[i].className='tabs';
+            }
+            //将当前超链接的样式设为已选tab头样式
+            document.getElementById(tabHeadId).className='curtab';
+            document.getElementById(tabHeadId).blur();
+        }
+
+</script>
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+</head>
+<body background="bg.jpg">
+	<p id="time"></p>
+	<div style="width: 99%; font-family: 微软雅黑; text-align: center;">
+		<mark><h1>图书信息管理系统</h1></mark></div>
+	<div id="tabDiv" style="width: 1000px">
+		<div id="tabsHead">
+			<a id="tabs1" class="tabs"
+				href="javascript:showTab('tabs1','tabContent1')">系统简介</a> <a
+				id="tabs2" class="tabs"
+				href="javascript:showTab('tabs2','tabContent2')">开发人员</a>
+		</div>
+		<div id="tabContent1" style="display: block">
+			<table style="border-width: 0">
+				<ul>
+					<li>图书信息管理系统。</li>
+					<li>图书信息管理系统是建立在信息技术基础上，以系统化的管理思想，为普通读者和管理员提供图书查看，增加，删除，修改图书信息功能的平台，。它整合了回到首页、普通用户注册，用户登录，图书基本信息查看，图书的增加，图书的删除，和图书的修改七个功能模块。图书信息管理系统以图书信息的管理为核心，进行用户的注册、登录、查看等功能。</li>
+					<form>
+						<input type="button" name="action1" value="注册"
+							onclick="this.form.action='Register.jsp';this.form.submit();">
+						<input type="button" name="action1" value="登录"
+							onclick="this.form.action='Login.jsp';this.form.submit();">
+					</form>
+				</ul>
+			</table>
+		</div>
+		<!--以下为开发人员部分内容-->
+		<div id="tabContent2" style="display: none">
+			<ul>
+				<li>系统开发人员：底云飞。</li>
+				<li>指导教师：杨子光老师。</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
