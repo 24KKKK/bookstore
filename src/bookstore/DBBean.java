@@ -5,8 +5,8 @@ import java.sql.*;
 public class DBBean {
 	String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	String dbURL = "jdbc:sqlserver://localhost:1433;DatabaseName=book";
-	String userName = "sa";
-	String userPwd = "20142983";
+	String userName = "root1";
+	String userPwd = "root1";
 	private Connection conn = null;
 	private Statement stmt = null;
 
